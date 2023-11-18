@@ -1,4 +1,4 @@
-package RickaPrincy.model;
+package RickaPrincy.repository;
 
 public class DbEnv{
     final public static String DB_URL = System.getenv("DB_URL");

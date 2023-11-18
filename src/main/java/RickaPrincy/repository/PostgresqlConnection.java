@@ -1,4 +1,4 @@
-package RickaPrincy.model;
+package RickaPrincy.repository;
 
 import lombok.Getter;
 
