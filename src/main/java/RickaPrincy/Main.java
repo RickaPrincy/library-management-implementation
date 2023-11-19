@@ -1,7 +1,11 @@
 package RickaPrincy;
 
+import RickaPrincy.repository.AuthorCrudOperations;
+import RickaPrincy.utils.Utils;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        AuthorCrudOperations authorCrudOperations = new AuthorCrudOperations();
+        Utils.printList(authorCrudOperations.findAll());
     }
 }

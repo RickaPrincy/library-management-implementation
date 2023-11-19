@@ -7,14 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AuthorCrudOperations implements CrudOperations<Author>{
     private final Connection connection = PostgresqlConnection.getConnection();
 
     public static Author authorInstance(ResultSet resultSet) throws SQLException {
         return new Author(
-                UUID.fromString(resultSet.getString("id")),
+                resultSet.getString("id"),
                 resultSet.getString("name"),
                 resultSet.getString("ref")
         );
