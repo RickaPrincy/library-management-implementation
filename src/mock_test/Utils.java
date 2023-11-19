@@ -1,4 +1,4 @@
-package RickaPrincy.mock_test;
+package mock_test;
 
 import java.util.List;
 

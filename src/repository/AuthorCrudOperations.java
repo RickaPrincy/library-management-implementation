@@ -1,7 +1,7 @@
-package RickaPrincy.repository;
+package repository;
 
-import RickaPrincy.model.Author;
-import RickaPrincy.model.Sex;
+import model.Author;
+import model.Sex;
 
 import java.sql.*;
 import java.util.ArrayList;

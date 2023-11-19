@@ -1,9 +1,7 @@
-package RickaPrincy;
-
-import RickaPrincy.mock_test.AuthorMockTest;
-import RickaPrincy.mock_test.BookMockTest;
-import RickaPrincy.mock_test.SubscriberMockTest;
-import RickaPrincy.repository.PostgresqlConnection;
+import mock_test.AuthorMockTest;
+import mock_test.BookMockTest;
+import mock_test.SubscriberMockTest;
+import repository.PostgresqlConnection;
 
 public class Main {
     public static void main(String[] args) {

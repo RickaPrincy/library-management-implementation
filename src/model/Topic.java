@@ -1,4 +1,4 @@
-package RickaPrincy.model;
+package model;
 
 public enum Topic {
     COMEDY,

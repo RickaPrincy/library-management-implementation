@@ -1,8 +1,8 @@
-package RickaPrincy.mock_test;
+package mock_test;
 
-import RickaPrincy.model.Author;
-import RickaPrincy.model.Sex;
-import RickaPrincy.repository.AuthorCrudOperations;
+import model.Author;
+import model.Sex;
+import repository.AuthorCrudOperations;
 
 import java.util.List;
 

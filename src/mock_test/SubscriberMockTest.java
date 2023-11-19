@@ -1,7 +1,7 @@
-package RickaPrincy.mock_test;
+package mock_test;
 
-import RickaPrincy.model.Subscriber;
-import RickaPrincy.repository.SubscriberCrudOperations;
+import model.Subscriber;
+import repository.SubscriberCrudOperations;
 
 import java.util.List;
 

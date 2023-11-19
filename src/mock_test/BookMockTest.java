@@ -1,8 +1,8 @@
-package RickaPrincy.mock_test;
+package mock_test;
 
-import RickaPrincy.model.Book;
-import RickaPrincy.model.Topic;
-import RickaPrincy.repository.BookCrudOperations;
+import model.Book;
+import model.Topic;
+import repository.BookCrudOperations;
 
 import java.sql.Date;
 import java.util.List;

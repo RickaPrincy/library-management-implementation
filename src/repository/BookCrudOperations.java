@@ -1,8 +1,8 @@
-package RickaPrincy.repository;
+package repository;
 
-import RickaPrincy.model.Author;
-import RickaPrincy.model.Book;
-import RickaPrincy.model.Topic;
+import model.Author;
+import model.Book;
+import model.Topic;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package RickaPrincy.repository;
+package repository;
 
-import RickaPrincy.model.Subscriber;
+import model.Subscriber;
 
 import java.sql.*;
 import java.util.ArrayList;
