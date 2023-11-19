@@ -14,4 +14,8 @@ public class Query {
         query += ") VALUES ( ?" + ", ?".repeat(columns.size() - 1) + " );";
         return query;
     }
+
+    public static String delete(String tableName){
+        return "DELETE FROM \"" + tableName + "\" WHERE id = ?;";
+    }
 }

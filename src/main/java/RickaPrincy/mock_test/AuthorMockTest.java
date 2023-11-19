@@ -21,5 +21,8 @@ public class AuthorMockTest {
             new Author("", "authorName_5", "authorRef_5"),
             new Author("", "authorName_6", "authorRef_6")
         )));
+
+        /* should return the author deleted*/
+        System.out.println(authorCrudOperations.delete(new Author("authorId_1", "", "")));
     }
 }

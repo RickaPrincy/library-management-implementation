@@ -66,6 +66,17 @@ public class AuthorCrudOperations implements CrudOperations<Author>{
 
     @Override
     public Author delete(Author toDelete) {
-        return null;
+        String query = Query.delete("author");
+        Author author = null;
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, toDelete.getId());
+            statement.executeUpdate();
+            author = toDelete;
+        }catch (SQLException error){
+            System.out.println(error.getMessage());
+        }
+
+        return author;
     }
 }
