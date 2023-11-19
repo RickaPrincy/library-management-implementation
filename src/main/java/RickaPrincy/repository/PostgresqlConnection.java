@@ -26,10 +26,12 @@ public class PostgresqlConnection{
     }
 
     public static void closeConnection(){
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        if(connection != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }

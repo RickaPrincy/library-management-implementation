@@ -1,11 +1,11 @@
 package RickaPrincy;
 
-import RickaPrincy.repository.AuthorCrudOperations;
-import RickaPrincy.utils.Utils;
+import RickaPrincy.mock_test.AuthorMockTest;
+import RickaPrincy.repository.PostgresqlConnection;
 
 public class Main {
     public static void main(String[] args) {
-        AuthorCrudOperations authorCrudOperations = new AuthorCrudOperations();
-        Utils.printList(authorCrudOperations.findAll());
+        AuthorMockTest.launch();
+        PostgresqlConnection.closeConnection();
     }
 }
