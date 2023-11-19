@@ -1,14 +1,10 @@
 package RickaPrincy.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@EqualsAndHashCode(callSuper = true)
-public class Subscriber extends User{
-    private String ref;
+public class Subscriber{
+    private String id, name, ref;
 }
