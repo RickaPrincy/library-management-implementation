@@ -23,5 +23,12 @@ DB_USERNAME=postgres #your postgresql username
 Just run the following command in the root directory of the project
 
 ```bash
-javac -cp 
+#step 1 : build
+javac -cp external/lombok.jar:external/postgresql-42.6.0.jar src/Main.java src/model/*.java src/mock_test/*.java src/repository/*.java -d build 
+
+#step2: creating a jar file
+jar cfm library_management.jar Manifest.txt -C build . 
+
+#to run 
+java -cp library_management.jar:external/lombok.jar:external/postgresql-42.6.0.jar Main 
 ```

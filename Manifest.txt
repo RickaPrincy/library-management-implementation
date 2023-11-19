@@ -1,0 +1,2 @@
+Main-Class: Main
+Class-Path: external/lombok.jar external/postgresql-42.6.0.jar
