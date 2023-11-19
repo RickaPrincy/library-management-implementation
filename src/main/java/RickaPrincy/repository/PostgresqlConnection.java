@@ -1,41 +1,33 @@
 package RickaPrincy.repository;
 
-import lombok.Getter;
-
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import java.sql.DriverManager;
-import java.sql.Statement;
-
-@Getter
 public class PostgresqlConnection{
-    private Connection connection;
-    private Statement statement;
-    private static PostgresqlConnection oneInstance;
-    private PostgresqlConnection(){
-        try {
-            this.connection = DriverManager.getConnection(
+    private static Connection connection;
+
+    public static Connection getConnection(){
+        if(connection != null)
+            return connection;
+
+        try{
+            connection = DriverManager.getConnection(
                     DbEnv.DB_URL,
                     DbEnv.DB_USERNAME,
                     DbEnv.DB_PASSWORD
             );
-            this.statement = this.connection.createStatement();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            return connection;
+        }
+        catch (SQLException error){
+            System.out.println(error.getMessage());
+            throw new RuntimeException("Connection failed");
         }
     }
 
-    public static PostgresqlConnection getNewInstance() {
-        if(PostgresqlConnection.oneInstance == null){
-            PostgresqlConnection.oneInstance = new PostgresqlConnection();
-        }
-        return PostgresqlConnection.oneInstance;
-    }
-
-    public void closeConnection(){
+    public static void closeConnection(){
         try {
-            this.connection.close();
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
