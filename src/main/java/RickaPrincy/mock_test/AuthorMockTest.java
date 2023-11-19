@@ -1,6 +1,7 @@
 package RickaPrincy.mock_test;
 
 import RickaPrincy.model.Author;
+import RickaPrincy.model.Sex;
 import RickaPrincy.repository.AuthorCrudOperations;
 
 import java.util.List;
@@ -13,16 +14,16 @@ public class AuthorMockTest {
 
         /* should return new author with uuid id */
         System.out.println(authorCrudOperations.save(
-            new Author("", "authorName_4", "authorRef_4"))
+            new Author("", "authorName_4", Sex.F))
         );
 
         /* should return list new author with uuid id */
         Utils.printList(authorCrudOperations.saveAll(List.of(
-            new Author("", "authorName_5", "authorRef_5"),
-            new Author("", "authorName_6", "authorRef_6")
+            new Author("", "authorName_5", Sex.M),
+            new Author("", "authorName_6", Sex.M)
         )));
 
         /* should return the author deleted*/
-        System.out.println(authorCrudOperations.delete(new Author("authorId_1", "", "")));
+        System.out.println(authorCrudOperations.delete(new Author("authorId_1", "", Sex.F)));
     }
 }

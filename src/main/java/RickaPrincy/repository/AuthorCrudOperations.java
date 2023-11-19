@@ -44,7 +44,7 @@ public class AuthorCrudOperations implements CrudOperations<Author>{
 
     @Override
     public Author save(Author toSave) {
-        String query = Query.create("author", List.of("name", "ref"));
+        String query = Query.create("author", List.of("name", "sex"));
         Author author = null;
 
         try{

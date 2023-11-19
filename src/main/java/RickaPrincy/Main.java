@@ -6,7 +6,7 @@ import RickaPrincy.repository.PostgresqlConnection;
 
 public class Main {
     public static void main(String[] args) {
-        //AuthorMockTest.launch();
+        AuthorMockTest.launch();
         BookMockTest.launch();
         PostgresqlConnection.closeConnection();
     }
