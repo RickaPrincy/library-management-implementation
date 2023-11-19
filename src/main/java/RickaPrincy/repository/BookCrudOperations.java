@@ -3,12 +3,11 @@ package RickaPrincy.repository;
 import RickaPrincy.model.Book;
 import RickaPrincy.model.Topic;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookCrudOperations implements CrudOperations<Book> {
     private final Connection connection = PostgresqlConnection.getConnection();
@@ -38,18 +37,42 @@ public class BookCrudOperations implements CrudOperations<Book> {
         } catch (SQLException error){
             System.out.println(error.getMessage());
         }
-
         return books;
     }
 
     @Override
     public List<Book> saveAll(List<Book> toSave) {
-        return null;
+        List<Book> books = new ArrayList<>();
+        toSave.forEach(el -> books.add(save(el)));
+        return books;
     }
 
     @Override
     public Book save(Book toSave) {
-        return null;
+        String topics = toSave.getTopics().stream()
+                .map(el -> "'" + el.toString() + "'::\"topic\"")
+                .collect(Collectors.joining(", "));
+        String query =
+            "INSERT INTO \"book\"(\"book_name\", \"page_numbers\", \"release_date\", \"topics\") " +
+            "VALUES (?, ? , ?, ARRAY[" + topics + "]);";
+        Book book = null;
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, toSave.getBookName());
+            statement.setLong(2, toSave.getPageNumbers());
+            statement.setDate(3, toSave.getReleaseDate());
+            statement.executeUpdate();
+
+            ResultSet resultSet = statement.getGeneratedKeys();
+            if(resultSet.next()){
+                toSave.setId(resultSet.getString(1));
+                book = toSave;
+            }
+        }catch (SQLException error){
+            System.out.println(error.getMessage());
+        }
+        return book;
     }
 
     @Override
