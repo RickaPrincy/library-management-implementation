@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Author {
-    private String id;
-    private String name, ref;
+    private String id, name;
+    private Sex sex;
 }

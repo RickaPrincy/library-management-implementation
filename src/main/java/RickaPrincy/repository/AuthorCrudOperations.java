@@ -1,6 +1,7 @@
 package RickaPrincy.repository;
 
 import RickaPrincy.model.Author;
+import RickaPrincy.model.Sex;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class AuthorCrudOperations implements CrudOperations<Author>{
         return new Author(
             resultSet.getString("id"),
             resultSet.getString("name"),
-            resultSet.getString("ref")
+            Sex.valueOf(resultSet.getString("sex"))
         );
     }
 
@@ -49,7 +50,7 @@ public class AuthorCrudOperations implements CrudOperations<Author>{
         try{
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1,toSave.getName());
-            statement.setString(2,toSave.getRef());
+            statement.setString(2,toSave.getSex().toString());
             statement.executeUpdate();
 
             ResultSet resultSet = statement.getGeneratedKeys();
