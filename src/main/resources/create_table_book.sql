@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS "book"(
      "page_numbers" INT CHECK("page_numbers" > 0) NOT NULL,
      "release_date" DATE NOT NULL,
      "topics" "topic"[],
-     "id_author" UUID REFERENCES "author"("id")
+     "id_author" VARCHAR(255) REFERENCES "author"("id")
 );
 
 INSERT INTO "book" VALUES ( 'bookId_1', 'bookName_1', 200, '2023-01-01', ARRAY['COMEDY'::"topic"], 'authorId_1' );

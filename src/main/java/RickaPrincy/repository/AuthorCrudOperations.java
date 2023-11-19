@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorCrudOperations implements CrudOperations<Author>{
-    private final Connection connection = PostgresqlConnection.getConnection();
+    private static final Connection connection = PostgresqlConnection.getConnection();
 
     public static Author authorInstance(ResultSet resultSet) throws SQLException {
         return new Author(
@@ -78,5 +78,21 @@ public class AuthorCrudOperations implements CrudOperations<Author>{
         }
 
         return author;
+    }
+
+    public static Author getOne(String id){
+        String query = "SELECT * FROM \"author\" WHERE id = ? ;";
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return authorInstance(resultSet);
+            }
+        }
+        catch (SQLException error){
+            System.out.println(error.getMessage());
+        }
+        return null;
     }
 }
